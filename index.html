@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ESSENCIA - Tienda Online</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="tienda.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+			<div class="container-fluid barra-navegacion">
+				<!-- Botón de hamburguesa para pantallas pequeñas -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="logo">
+					<a class="navbar-brand mx-auto d-flex" href="index.html">
+						<img src="essencia.png" class="imagen-logo" alt="logo de la página">
+					</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="navbarContent">
+					<div class="navbar-nav ms-auto">
+						<div class="navegacion">
+							<a class="nav-link" id="catalogo" href="catalogo.html">Catálogo</a>
+							<div class="nav-item dropdown d-none d-xl-block">
+    							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="buscar-desplegable" aria-expanded="false">
+    							<span>Buscar</span>
+  								</button>
+  								<div class="dropdown-menu p-3 contenido-busqueda" id="contenido-busqueda">
+  									<div class="busqueda-caja">
+  										<button class="cerrar-modal">&times;</button> <!-- Botón de cierre -->
+  										<br><h3 class="busqueda">Búsqueda</h3><br><br>
+  										<div class="inputs">
+  											<!-- Formulario de búsqueda en tienda.html --> 
+  											<form id="form-busqueda-tienda" action="resultado.html" method="GET"> <!-- Agregado nuevo para la busqueda -->
+  											<div class="input-talles">
+  												<p><strong>Talle:</strong></p>
+  												<div class="form-check">
+  													<input type="checkbox" id="xs" class="form-check-input" id="xs" name="talles" value="xs">
+  													<label class="form-check-label" for="xs">XS</label>
+  												</div>
+  												<div class="form-check">
+  													<input type="checkbox" id="s" class="form-check-input" id="s" name="talles" value="s">
+  													<label class="form-check-label" for="s">S</label>
+  												</div>
+  												<div class="form-check">
+  													<input type="checkbox" id="m" class="form-check-input" id="m" name="talles" value="m">
+  													<label class="form-check-label" for="m">M</label>
+  												</div>
+  												<div class="form-check">
+  													<input type="checkbox" id="l" class="form-check-input" id="l" name="talles" value="l">
+  													<label class="form-check-label" for="l">L</label>
+  												</div>
+  												<div class="form-check">
+  													<input type="checkbox" id="xl" class="form-check-input" id="xl" name="talles" value="xl">
+  													<label class="form-check-label" for="xl">XL</label>
+  												</div>
+  												<div class="form-check">
+  													<input type="checkbox" id="xxl" class="form-check-input" id="xxl" name="talles" value="xxl">
+  													<label class="form-check-label" for="xxl">XXL</label>
+  												</div>
+  												<div class="form-check">
+  													<input type="checkbox" id="xxxl" class="form-check-input" id="xxxl" name="talles" value="xxxl">
+  													<label class="form-check-label" for="xxxl">XXXL</label>
+  												</div>
+  											</div>
+
+  											<div class="input-colores mt-3">
+  												<p><strong>Color:</strong></p>
+  												<select class="form-select select-form" name="colores">
+  													<option value="">Selecciona un color</option>
+  													<option value="negro">Negro</option>
+  													<option value="beige">Beige</option>
+  													<option value="gris">Gris</option>
+  													<option value="verde">Verde</option>
+  												</select>
+  											</div>
+
+  											<div class="input-modelos mt-3">
+  												<p><strong>Modelo:</strong></p>
+  												<select class="form-select select-form" name="modelos">
+  													<option value="">Selecciona un modelo</option>
+  													<option value="pantalones">Pantalones</option>
+  													<option value="remeras">Remeras</option>
+  													<option value="vestidos">Vestidos</option>
+  												</select>
+  											</div>
+
+  											<div class="boton-buscar">
+  												<button type="submit" class="buscar" id="buscar">
+  												<span></span>
+      											<span></span>
+      											<span></span>
+      											<span></span>
+      											<b>Buscar</b>
+      										</button>
+  											</div>
+  										</form>
+  										</div>
+  									</div>
+
+  								</div>
+
+							</div>
+
+							<!-- Botón Buscar para pantallas pequeñas -->
+							<a id="buscar-menu" class="nav-link btn btn-secondary d-xl-none" data-bs-toggle="modal" data-bs-target="#buscarModal">Buscar</a>
+
+							<a id="blog" class="nav-link" href="blog.html">Blog</a>
+							<a id="testimonio" class="nav-link" href="testimonios.html">Testimonios</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="custom-icons-container-1">
+					<div class="custom-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+						<img src="carrito.png" class="carrito" alt="carrito de compra">
+					</div>
+				</div>
+				<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    					<div class="modal-content custom-border" id="contenido-carrito">
+      						<div class="modal-header custom-header">
+        						<h5 class="modal-title" id="cartModalLabel">Carrito</h5>
+        						<button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      						</div>
+      						<div class="modal-subtitle text-center">Listado del Carrito:</div>
+      						<div class="modal-body custom-inner-box">
+      							<div id="cartItems" class="carrito-lista">
+      								<!-- Listado de productos en el carrito se llenará dinámicamente -->
+      							</div>
+      						</div>
+      						<div class="modal-footer custom-footer" id="botones">
+      							<button type="button" class="btn btn-secondary" id="pagar" data-bs-dismiss="modal">
+      								<span></span>
+      								<span></span>
+      								<span></span>
+      								<span></span>
+      								<b>Pagar</b>
+      							</button>
+        						<button type="button" class="btn btn-secondary" id="boton-cerrar" data-bs-dismiss="modal">
+        							<span></span>
+      								<span></span>
+      								<span></span>
+      								<span></span>
+        							<b>Cerrar</b>
+        						</button>
+      						</div>
+    					</div>
+  					</div>
+				</div>
+
+				<div class="custom-icons-container">
+					<div class="custom-btn" data-bs-toggle="modal" data-bs-target="#configModal" id="custom-btn">
+						<img src="configuracion.png" class="config" alt="configuración">
+					</div>
+				</div>
+				<div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+  					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    					<div class="modal-content custom-border" id="contenido-config">
+      						<div class="modal-header custom-header">
+        						<h5 class="modal-title text-center" id="configModalLabel">Configuración</h5>
+        						<button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      						</div>
+      						<div class="modal-body custom-inner-box">
+        					<!-- Opciones de configuración -->
+        
+        					<!-- Cambiar tamaño de letra -->
+        						<div class="mb-3">
+          							<p><strong>Tamaño de letra:</strong></p>
+         							<div class="botones-1">
+         								<button type="button" class="btn btn-outline-secondary font-size-btn" data-size="normal">Normal</button>
+          								<button type="button" class="btn btn-outline-secondary font-size-btn" data-size="large">Grande</button>
+         							</div>
+        						</div>
+
+        						<!-- Cambiar contraste -->
+        						<div class="mb-3">
+          							<p><strong>Tema:</strong></p>
+          							<div class="botones-2">
+          								<button type="button" class="btn btn-outline-secondary contrast-btn" data-contrast="low">Claro</button>
+          								<button type="button" class="btn btn-outline-secondary contrast-btn" data-contrast="high">Oscuro</button>
+          							</div>
+        						</div>
+      						</div>
+      						<div class="modal-footer custom-footer" id="botones">
+      							<button type="button" class="btn btn-secondary" id="guardar" data-bs-dismiss="modal">
+      								<span></span>
+      								<span></span>
+      								<span></span>
+      								<span></span>
+      								<b>Guardar</b>
+      							</button>
+        						<button type="button" class="btn btn-secondary" id="boton-cerrar" data-bs-dismiss="modal">
+        							<span></span>
+      								<span></span>
+      								<span></span>
+      								<span></span>
+        							<b>Cerrar</b>
+        						</button>
+      						</div>
+    					</div>
+  					</div>
+				</div>
+
+			</div>
+		</nav>
+
+
+		<div class="modal fade" id="buscarModal" tabindex="-1" aria-labelledby="buscarModalLabel" aria-hidden="true">
+    		<div class="modal-dialog modal-dialog-centered">
+        		<div class="modal-content" id="modal-content-1">
+            		<div class="modal-header">
+                		<h5 class="modal-title" id="buscarModalLabel">Búsqueda</h5>
+                		<button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            		</div>
+            
+            		<div class="contenido-busqueda">
+                		<h3 class="busqueda">Búsqueda</h3>
+                		<div class="inputs">
+                			<!-- Formulario de búsqueda en tienda.html --> 
+                			<form id="form-busqueda-tienda" action="resultado.html" method="GET">
+  							<div class="input-talles">
+  								<p><strong>Talle:</strong></p>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="xs" name="talles" value="xs">
+  									<label class="form-check-label" for="xs">XS</label>
+  								</div>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="s" name="talles" value="s">
+  									<label class="form-check-label" for="s">S</label>
+  								</div>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="m" name="talles" value="m">
+  									<label class="form-check-label" for="m">M</label>
+  								</div>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="l" name="talles" value="l">
+  									<label class="form-check-label" for="l">L</label>
+  								</div>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="xl" name="talles" value="xl">
+  									<label class="form-check-label" for="xl">XL</label>
+  								</div>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="xxl" name="talles" value="xxl">
+  									<label class="form-check-label" for="xxl">XXL</label>
+  								</div>
+  								<div class="form-check">
+  									<input type="checkbox" class="form-check-input" id="xxxl" name="talles" value="xxxl">
+  									<label class="form-check-label" for="xxxl">XXXL</label>
+  								</div>
+  							</div>
+
+  							<div class="input-colores mt-3">
+  								<p><strong>Color:</strong></p>
+  								<select class="form-select select-form" name="colores">
+  									<option value="">Selecciona un color</option>
+  									<option value="negro">Negro</option>
+                    <option value="beige">Beige</option>
+                    <option value="gris">Gris</option>
+  									<option value="verde">Verde</option>
+  								</select>
+  							</div>
+
+  							<div class="input-modelos mt-3">
+  								<p><strong>Modelo:</strong></p>
+  								<select class="form-select select-form" name="modelos">
+  									<option value="">Selecciona un modelo</option>
+  									<option value="pantalones">Pantalones</option>
+  									<option value="remeras">Remeras</option>
+  									<option value="vestidos">Vestidos</option>
+  								</select>
+  							</div>
+
+  							<div class="boton-buscar">
+  								<button type="submit" class="buscar-resul" id="buscar-resul">
+  								<span></span>
+      							<span></span>
+      							<span></span>
+      							<span></span>
+      							<b>Buscar</b>
+      						</button>
+  							</div>
+  						</div>
+  					</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="cuerpo">
+			<img src="fondo-con-opacidad.jpg" class="imagen-fondo" alt="imagen de fondo">
+			<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+  				<!-- Indicadores de navegación (puntitos) -->
+  				<div class="carousel-indicators">
+    				<button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    				<button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    				<button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  				</div>
+
+  				<!-- Contenido de las imágenes -->
+  				<div class="carousel-inner">
+    				<div class="carousel-item active">
+      				<img src="banner-2.jpg" class="d-block w-100" alt="Banner 1">
+    				</div>
+    				<div class="carousel-item">
+      				<img src="banner-3.jpg" class="d-block w-100" alt="Banner 2">
+    				</div>
+    				<div class="carousel-item">
+      				<img src="banner-1.jpg" class="d-block w-100" alt="Banner 3">
+    				</div>
+  				</div>
+
+  				<!-- Controles de navegación izquierda y derecha -->
+  				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    				<span class="visually-hidden">Previous</span>
+  				</button>
+  				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+    				<span class="visually-hidden">Next</span>
+  				</button>
+			</div>
+
+			<!--
+			<div class="titulo-video">
+				<h2 class="titulo"><b>Mirá Nuestros Próximos Ingresos</b></h2>
+			</div>
+			<div class="contenido-video">
+				<div class="detalles">
+                	<div class="descripcion">
+                		<h2 class="detalle-final"><b>Muy pronto lo vas a poder encontrar acá en nuestra tienda online.</b></h2>
+                		<p class="desc-video">Se vienen nuevos ingresos para todas ustedes, más variedades de colores, talles y modelos, muy pronto lo vas a ver reflejado en nuestra tienda online.</p>
+                	</div>
+
+            	</div>
+            	<div class="video">
+            		<iframe width="100%" height="100%" src="https://www.youtube.com/embed/8ynmUkBd024" 
+                	title="YouTube video player" frameborder="0" 
+                	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                	allowfullscreen></iframe>
+            	</div>
+            </div>
+			-->
+
+			<div class="titulo-video">
+				<h2 class="titulo"><b>Mirá Nuestros Próximos Ingresos</b></h2>
+			</div>
+		
+            <div class="promo-container">
+  				<div class="promo-text">
+    				<h2><b>¡Muy pronto en nuestra tienda online!</b></h2>
+    				<p>
+      					Se vienen nuevos ingresos para todas ustedes: más variedades de colores, talles y modelos. 
+     					Muy pronto lo vas a poder encontrar acá. ¡No te lo pierdas!
+    				</p>
+  				</div>
+  				<div class="promo-video">
+    				
+  					<iframe class="video-yt" width="100%" height="100%" src="https://www.youtube.com/embed/WmG4BI02POU?si=Ch1aYT9smSpwJmpB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!--    				<video controls>
+      				<source src="ESSENCIA.mp4" type="video/mp4">
+      				<track src="subtitulos.vtt" kind="subtitles" srclang="es" label="Español">
+      					Tu navegador no soporta este video.
+    				</video>   -->
+  				</div>
+				</div>
+
+
+            <section class="product">
+				<h2 class="product-category"><b>Nuestros Productos</b></h2>
+				<button class="pre-btn" id="pre-btn"><img src="flecha.png" class="flecha" alt=""></button>
+				
+				<div class="product-container" id="product-container">
+					<div class="product-card">
+						<div class="product-image">
+							<button class="add-to-cart-btn" onclick="agregarAlCarritoDesdeTarjeta(this)">
+            					<img src="carrito-negro.png" alt="Agregar al carrito" class="cart-icon">
+        					</button>
+							<img src="vestimenta/pantalones/negro.jpg" class="product-thumb" alt="pantalon corto negro">
+							<a href="pantalon-corto.html">
+								<button class="card-btn" id="card-btn">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<b>Ver Modelo</b>
+								</button>
+							</a>
+						</div>
+						<div class="product-info">
+							<h2 class="product-brand">Short Ruby</h2>
+							
+							<span class="price">$79.999</span>
+						</div>
+					</div>
+					<div class="product-card">
+						<div class="product-image">
+							<button class="add-to-cart-btn" onclick="agregarAlCarritoDesdeTarjeta(this)">
+            					<img src="carrito-negro.png" alt="Agregar al carrito" class="cart-icon">
+        					</button>
+						<!--	<span class="discount-tag">Disponible</span>  -->
+							<img src="vestimenta/pantalones/negro.jpg" class="product-thumb" alt="">
+							<a href="pantalon-corto.html">
+								<button class="card-btn" id="card-btn">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<b>Ver Modelo</b>
+								</button>
+							</a>
+						</div>
+						<div class="product-info">
+							<h2 class="product-brand">Short Ruby</h2>
+							
+							<span class="price">$79.999</span>
+						</div>
+					</div>
+					<div class="product-card">
+						<div class="product-image">
+							<button class="add-to-cart-btn" onclick="agregarAlCarritoDesdeTarjeta(this)">
+            					<img src="carrito-negro.png" alt="Agregar al carrito" class="cart-icon">
+        					</button>
+						<!--	<span class="discount-tag">Disponible</span>  -->
+							<img src="vestimenta/pantalones/negro.jpg" class="product-thumb" alt="">
+							<a href="pantalon-corto.html">
+								<button class="card-btn" id="card-btn">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<b>Ver Modelo</b>
+								</button>
+							</a>
+						</div>
+						<div class="product-info">
+							<h2 class="product-brand">Short Ruby</h2>
+							
+							<span class="price">$79.999</span>
+						</div>
+					</div>
+					<div class="product-card">
+						<div class="product-image">
+							<button class="add-to-cart-btn" onclick="agregarAlCarritoDesdeTarjeta(this)">
+            					<img src="carrito-negro.png" alt="Agregar al carrito" class="cart-icon">
+        					</button>
+						<!--	<span class="discount-tag">Disponible</span>  -->
+							<img src="vestimenta/pantalones/negro.jpg" class="product-thumb" alt="">
+							<a href="pantalon-corto.html">
+								<button class="card-btn" id="card-btn">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<b>Ver Modelo</b>
+								</button>
+							</a>
+						</div>
+						<div class="product-info">
+							<h2 class="product-brand">Short Ruby</h2>
+							
+							<span class="price">$79.999</span>
+						</div>
+					</div>
+					<div class="product-card">
+						<div class="product-image">
+							<button class="add-to-cart-btn" onclick="agregarAlCarritoDesdeTarjeta(this)">
+            					<img src="carrito-negro.png" alt="Agregar al carrito" class="cart-icon">
+        					</button>
+						<!--	<span class="discount-tag">Disponible</span>  -->
+							<img src="vestimenta/pantalones/negro.jpg" class="product-thumb" alt="">
+							<a href="pantalon-corto.html">
+								<button class="card-btn" id="card-btn">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<b>Ver Modelo</b>
+								</button>
+							</a>
+						</div>
+						<div class="product-info">
+							<h2 class="product-brand">Short Ruby</h2>
+							
+							<span class="price">$79.999</span>
+						</div>
+					</div>
+					<div class="product-card">
+						<div class="product-image">
+							<button class="add-to-cart-btn" onclick="agregarAlCarritoDesdeTarjeta(this)">
+            					<img src="carrito-negro.png" alt="Agregar al carrito" class="cart-icon">
+        					</button>
+						<!--	<span class="discount-tag">Disponible</span>  -->
+							<img src="vestimenta/pantalones/negro.jpg" class="product-thumb" alt="">
+							<a href="pantalon-corto.html">
+								<button class="card-btn" id="card-btn">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<b>Ver Modelo</b>
+								</button>
+							</a>
+						</div>
+						<div class="product-info">
+							<h2 class="product-brand">Short Ruby</h2>
+							
+							<span class="price">$79.999</span>
+						</div>
+					</div>
+				</div>
+				<button class="next-btn" id="next-btn"><img src="flecha.png" class="flecha" alt=""></button>
+				<div class="pagination" id="pagination"></div>
+			</section>
+
+			<!-- Modal para seleccionar el talle -->
+			<div id="overlay-talle" class="overlay"></div>
+			<div id="modal-talle" class="modal-talle" style="display: none;">
+    			<div class="modal-content">
+        			<h2 class="modal-title">Seleccione el talle que desee para agregar al carrito</h2>
+        			<!-- <button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button> -->
+        			<div class="modal-body">
+            			<!-- Selector de Talles -->
+            		<!--	<label for="select-talle" class="modal-label">Talle:</label> -->
+            			<select id="select-talle" class="select-form">
+                			<option value="">Seleccione un talle</option>
+                			<option value="XS">XS</option>
+                			<option value="S">S</option>
+                			<option value="M">M</option>
+                			<option value="L">L</option>
+                			<option value="XL">XL</option>
+                			<option value="XXL">XXL</option>
+                			<option value="XXXL">XXXL</option>
+            			</select>
+        			</div>
+        			<div class="modal-buttons">
+            			<button id="confirmar-talle" class="btn">
+            				<span></span>
+      						<span></span>
+      						<span></span>
+      						<span></span>
+            				<b>Confirmar</b>
+            			</button>
+            			<button id="cerrar-modal" class="btn">
+            				<span></span>
+      						<span></span>
+      						<span></span>
+      						<span></span>
+            				<b>Cancelar</b>
+            			</button>
+        			</div>
+    			</div>
+			</div>
+
+		</div>
+	</main>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+	<script src="tienda.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<footer>
+		<div class="footer">
+			<img src="essencia.png" class="imagen-logo" alt="logo de la página">
+
+			<div class="dropdown-custom">
+				<img src="redes/logo-redes.png" alt="redes sociales" class="logo-redes" onclick="toggleDropdown()">
+				<div class="dropdown-menu-custom" id="menu-redes">
+					<a href="https://www.facebook.com/?locale=es_LA">
+							<img src="redes/facebook.PNG" alt="facebook" class="facebook">
+					</a>
+					<a href="https://www.instagram.com/" class="a-inst">
+							<img src="redes/instagram.PNG" alt="instagram" class="instagram">
+					</a>
+					<a href="https://x.com/?lang=es">
+							<img src="redes/x.png" alt="x" class="x">
+					</a>
+					<a href="https://web.whatsapp.com/" class="a-whats">
+							<img src="redes/whatsapp.PNG" alt="whatsapp" class="whatsapp">
+					</a>
+				</div>
+			</div>
+
+			<div class="img-der">
+				<img src="derechos.PNG" alt="derechos de la pagina" class="derechos">
+			</div>
+		</div>
+	</footer>
+
+
+
+</body>
+</html>

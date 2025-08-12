@@ -1,0 +1,2309 @@
+* { 
+	padding: 0px;
+	margin: 0px;
+	text-decoration: none;
+	font-family: "Inter", sans-serif;
+}
+
+.barra-navegacion {
+	display: flex;
+	background-color: #003366;
+	z-index: 2000;
+	height: 80px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	position: fixed; /* ver como configurar bien esto, porque no deja
+	que funcione los modales de carrito y con figuracion. */
+
+}
+
+/* tamaño de las imagenes de la barra de navegacion */
+.imagen-logo {
+	width: 250px;
+	transition: transform 0.3s; max-height: 0.3s;
+}
+
+.carrito, .config {
+	width: 60px;
+	margin-left: 10px;
+	transition: transform 0.3s; max-height: 0.3s;
+}
+
+
+
+/* posicion del logo */
+.logo {
+	align-content: center;
+	margin-left: 30px;
+}
+
+.boton-busqueda {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+}
+
+.dropdown {
+	display: flex;
+	justify-content: center;
+}
+
+/* boton lista buscar */
+#buscar-desplegable {
+	background-color: transparent;
+	border: none;
+	font-size: 25px;
+	top: 2px;
+}
+
+.navegacion {
+	justify-content: center;
+	flex: 1;
+	margin-right: 170px;
+}
+
+/* estilo en catalogo , buscar, blog y testimonios */
+
+.navegacion a {
+    align-content: center;
+    font-size: 25px;
+    text-align: center;
+}
+
+/* Estilos de enlaces de navegación y botón "Buscar" */
+.navegacion a, #buscar-desplegable {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+    margin: 0 50px;
+    margin-top: 5px; /* Ajuste para centrarlos verticalmente en la barra de navegación */
+}
+
+/* Hover en enlaces y botón "Buscar" */
+.barra-navegacion .navegacion a:hover,
+#buscar-desplegable:hover {
+    color: #fff;
+}
+
+/* Subrayado animado para enlaces de navegación */
+.barra-navegacion .navegacion a::after,
+#buscar-desplegable span::after { /* Usamos un span para aplicar el subrayado solo al texto del botón */
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    top: 55px;
+    left: 0;
+    background-color: #6A92FF;
+    transition: width 0.3s ease;
+}
+
+/* Expande la línea bajo el enlace o botón al 100% */
+.barra-navegacion .navegacion a:hover::after,
+#buscar-desplegable:hover span::after {
+    width: 100%;
+}
+/* FIN estilo en catalogo , buscar, blog y testimonios */
+
+
+
+/* contenido caja busqueda */
+/* caja principal */
+#contenido-busqueda {
+    background-color: #003366; /* Color azul de fondo */
+    border-radius: 8px;        /* Bordes redondeados */
+    width: 500px;          /* Ancho máximo de la caja */
+    align-content: center;
+    justify-content: center;
+    border: 2px solid #fff;
+}
+
+/* h3 */
+.busqueda {
+	color: #fff;
+	font-weight: bold;
+	position: fixed;
+	grid-gap: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+
+/* Caja interna blanca */
+
+.inputs {
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 20px;
+	font-size: 20px;
+}
+
+.input-talles {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.input-talles .form-check {
+	display: flex;
+	align-items: center;
+}
+
+.input-talles label {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.input-talles input {
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.input-talles p {
+	margin-top: 23px;
+}
+
+
+select.form-select {
+	color: #aaa;
+}
+
+select.form-select option:not([value=""]) {
+	color: #000;
+}
+
+/* Estilo para los selectores */
+.select-form {
+    background-color: #fff;
+    border: 2px solid #003366; /* Borde azul */
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover */
+.select-form:hover {
+    border-color: #6A92FF; /* Color más claro */
+    box-shadow: 0 0 5px rgba(106, 146, 255, 0.5); /* Sombra suave */
+}
+
+/* Efecto al enfocar */
+.select-form:focus {
+    border-color: #FF6F91;
+    box-shadow: 0 0 5px rgba(255, 111, 145, 0.5);
+}
+
+/* Estilo del botón Buscar */
+#buscar {
+	background-color: #FF6F91;
+	color: black;
+	font-size: 20px;
+	padding: 10px 15px;
+	transition: background-color 0.5s;
+	position: relative;  /* Necesario para los spans absolutos */
+	overflow: hidden;
+	border: none;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.boton-buscar {
+	text-align: center;
+	margin-top: 20px;
+}
+
+#buscar:hover {
+    color: #fff;
+    background-color: #003366;
+}
+
+/* Botón de cierre del modal */
+	.cerrar-modal {
+    	position: absolute;
+    	top: 10px;
+    	right: 10px;
+    	background-color: transparent;
+    	border: none;
+    	font-size: 1.5rem;
+    	font-weight: bold;
+    	color: #000;
+    	cursor: pointer;
+	}
+
+
+
+/* FIN contenido caja busqueda */
+
+
+
+/* carrito y configuracion */
+/* contenedor principal */
+#contenido-carrito, #contenido-config {
+
+	background-color: #003366;
+	padding: 20px;
+	border-radius: 10px;
+
+}
+
+.botones-2 {
+	display: flex;
+	justify-content: center;
+	gap: 90px;
+}
+
+.botones-1 {
+	display: flex;
+	justify-content: center;
+	gap: 70px;
+}
+
+.mb-3 {
+	margin-bottom: 20px;
+}
+
+.modal-content {
+	top: 20px;
+}
+
+/* contenedor secundario */
+.custom-inner-box {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+/* posicion de imagen configuracion */
+.custom-icons-container {
+	top: 10px;
+	gap: 10px;
+	z-index: 1001;
+	position: relative;
+}
+
+/* posicion de imagen carrito */
+.custom-icons-container-1 {
+	top: 10px;
+	gap: 10px;
+	z-index: 1001;
+	position: relative;
+}
+
+/* titulos (caarito y configuracion) */
+.modal-title {
+	left: 50px;
+	font-weight: bold;
+	color: #fff;
+	font-size: 25px;
+}
+
+/* subtitulo de carrito */
+.modal-subtitle {
+	text-align: center;
+	color: #fff;
+	font-size: 20px;
+	margin-top: 15px;
+}
+ /* tamaño del listado (fondo) del carrito */
+#cartItems {
+	height: 500px;
+}
+
+/* div de la imagen del carrito */
+.custom-btn {
+	background-color: transparent;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+/* personalizar el boton "X" del carrito y configuracion */
+#custom-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+#botones {
+	justify-content: center;
+	margin-right: 10px;
+}
+
+
+#pagar, #guardar, #boton-cerrar {
+	background-color: #FF6F91;
+	color: black;
+	font-size: 20px;
+	padding: 10px 15px;
+	transition: background-color 0.5s;
+	position: relative;  /* Necesario para los spans absolutos */
+	overflow: hidden;
+	border: none;
+	display: inline-block; 
+	
+}
+
+#pagar, #guardar {
+	margin-right: 60px;
+}
+
+#guardar:hover, #pagar:hover {
+	background-color: #6A92FF;
+}
+
+#boton-cerrar:hover {
+	background-color: #6A92FF;
+}
+
+#guardar span, #boton-cerrar span, #pagar span, #buscar span {
+	position: absolute;
+	background: #fff;
+	transition: all 0.5s ease;
+}
+
+#guardar span:nth-child(1), #boton-cerrar span:nth-child(1), #pagar span:nth-child(1), #buscar span:nth-child(1) {
+	width: 100%;
+	height: 2px;
+	top: 0;
+	left: -100%;
+}
+
+#guardar span:nth-child(2), #boton-cerrar span:nth-child(2), #pagar span:nth-child(2), #buscar span:nth-child(2) {
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	right: -100%;
+}
+
+#guardar span:nth-child(3), #boton-cerrar span:nth-child(3), #pagar span:nth-child(3), #buscar span:nth-child(3) {
+	width: 2px;
+	height: 100%;
+	bottom: -100%;
+	left: 0;
+}
+
+#guardar span:nth-child(4), #boton-cerrar span:nth-child(4), #pagar span:nth-child(4), #buscar span:nth-child(4) {
+	width: 2px;
+	height: 100%;
+	top: -100%;
+	right: 0;
+}
+
+#guardar:hover span:nth-child(1), #boton-cerrar:hover span:nth-child(1), #pagar:hover span:nth-child(1), #buscar:hover span:nth-child(1) {
+	left: 0;
+}
+
+#guardar:hover span:nth-child(2), #boton-cerrar:hover span:nth-child(2), #pagar:hover span:nth-child(2), #buscar:hover span:nth-child(2) {
+	right: 0;
+}
+
+#guardar:hover span:nth-child(3), #boton-cerrar:hover span:nth-child(3), #pagar:hover span:nth-child(3), #buscar:hover span:nth-child(3) {
+	bottom: 0;
+}
+
+#guardar:hover span:nth-child(4), #boton-cerrar:hover span:nth-child(4), #pagar:hover span:nth-child(4), #buscar:hover span:nth-child(4) {
+	top: 0;
+}
+
+
+/* FIN carrito y configuracion */
+
+/* FIN config barra navegacion */
+
+
+
+/* configuracion de contraste y tamaño de letra */
+
+
+
+/* Estilos para los modales */
+body.high-contrast #contenido-carrito, #contenido-config {
+    background-color: #000;
+    border: 3px solid #959595;
+}
+
+body.high-contrast #contenido-busqueda {
+	background-color: #000;
+	border: 3px solid #959595;
+}
+
+body.high-contrast .custom-btn {
+	background-color: transparent;
+}
+
+
+/* color blanco de las letras */
+body.high-contrast .titulo {
+	color: #fff;
+}
+
+body.high-contrast .product-category {
+	color: #fff;
+}
+
+body.high-contrast .product-brand {
+	color: #fff;
+}
+
+body.high-contrast .price {
+	color: #fff;
+}
+
+body.low-contrast .titulo {
+	color: #000;
+}
+
+body.low-contrast .product-category {
+	color: #000;
+}
+body.low-contrast .product-brand {
+	color: #000;
+}
+body.low-contrast .price {
+	color: #000;
+}
+
+body.high-contrast .barra-navegacion {
+	background-color: #000; /* gris: #959595 */
+	border: 2px solid #fff;
+}
+
+body.low-contrast .cuerpo {
+	background: url('fondo-con-opacidad.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.low-contrast .imagen-fondo {
+	display: none;
+}
+
+
+/* Contraste alto con imagen o color sólido */
+body.high-contrast .cuerpo {
+    background: url('fondo-contraste.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+
+/* Estilo para la flecha en contraste bajo */ 
+body.low-contrast .pre-btn .flecha { 
+	filter: invert(0); /* No invertir colores */ 
+} 
+
+/* Estilo para la flecha en contraste alto */ 
+body.high-contrast .pre-btn .flecha { 
+	filter: invert(1); /* Invertir colores para visibilidad */ 
+}
+
+/* Estilo para la flecha en contraste bajo */ 
+body.low-contrast .next-btn .flecha { 
+	filter: invert(0); /* No invertir colores */ 
+} 
+
+/* Estilo para la flecha en contraste alto */ 
+body.high-contrast .next-btn .flecha { 
+	filter: invert(1); /* Invertir colores para visibilidad */ 
+}
+
+
+
+body.high-contrast .imagen-fondo {
+	display: none;
+}
+
+/* Botones */
+body.high-contrast .btn {
+    background-color: #fff;
+    color: #959595;
+}
+
+body.high-contrast .btn:hover {
+    background-color: #959595;
+    color: #fff;
+}
+
+body.font-large .modal-buttons {
+	margin-bottom: 20px;
+}
+
+
+/* Estilo para los botones de contraste y tamaño de letra seleccionados */
+button.active {
+    background-color: #959595;  /* Color de fondo para botones activos */
+    color: #000;  /* Color de texto para botones activos */
+    border-color: #fff; /* Borde para botones activos */
+}
+
+/* Contraste alto - estilos específicos para los botones cuando contraste es alto */
+body.high-contrast .contrast-btn.active {
+    background-color: #959595;  /* Fondo oscuro para el contraste alto */
+    color: #000;  /* Texto blanco para contraste alto */
+    border-color: #fff;  /* Borde blanco para contraste alto */
+}
+
+/* Contraste bajo - estilos específicos para los botones cuando contraste es bajo */
+body.low-contrast .contrast-btn.active {
+    background-color: #959595;  /* Fondo gris claro para el contraste bajo */
+    color: #000;  /* Texto negro para contraste bajo */
+    border-color: #fff;  /* Borde negro para contraste bajo */
+}
+
+/* Asegúrate de tener los estilos del tamaño de letra igualmente definidos */
+body.font-large .font-size-btn.active {
+    background-color: #959595;  /* Fondo azul para el tamaño de letra grande */
+    color: #000;  /* Texto blanco para el tamaño de letra grande */
+}
+body.font-normal .font-size-btn.active {
+    background-color: #959595;  /* Fondo gris para el tamaño de letra normal */
+    color: #000;  /* Texto negro para el tamaño de letra normal */
+}
+
+body.font-normal .nav-link {
+	margin-bottom: 10px;
+}
+
+
+
+/* Footer */
+body.high-contrast .footer {
+    background-color: #000;
+    border: 2px solid #fff;
+}
+
+
+/* Tamaño de letra grande */
+body.font-large .imagen-logo {
+	width: 280px;
+} 
+
+body.font-large #buscar-desplegable {
+	font-size: 30px;
+}
+
+body.font-large .navegacion a {
+	font-size: 30px;
+}
+
+body.font-large .promo-text p {
+    font-size: 25px;
+}
+
+body.font-large .titulo {
+    font-size: 38px;
+}
+
+body.font-large .promo-text h2 {
+    font-size: 38px;
+}
+
+body.font-large .product-category {
+	font-size: 35px;
+}
+
+body.font-large .product-brand {
+	font-size: 25px;
+}
+
+body.font-large .price {
+	font-size: 23px;
+}
+
+body.font-large .card-btn {
+	font-size: 19px;
+}
+
+body.font-large .modal-title {
+    font-size: 30px;
+}
+
+body.font-large #confirmar-talle {
+	font-size: 23px;
+}
+
+body.font-large #cerrar-modal {
+	font-size: 23px;
+}
+
+body.font-large .select-form {
+    font-size: 22px;
+    margin-bottom: 50px;
+}
+
+body.font-large .derechos {
+	width: 470px;
+	height: 25px;
+}
+
+body.font-large .busqueda {
+	font-size: 33px;
+}
+
+body.font-large .inputs {
+	font-size: 25px;
+}
+
+body.font-large #buscar {
+	font-size: 24px; 
+}
+
+body.font-large .input-talles p {
+	margin-top: 20px;
+}
+
+body.font-large .nav-link {
+	margin-bottom: 10px;
+}
+
+body.font-large .busqueda {
+	margin-bottom: 20px;
+}
+
+body.font-large .modal-title {
+	font-size: 35px;
+}
+
+body.font-large .modal-subtitle {
+	font-size: 25px;
+}
+
+body.font-large #pagar {
+	font-size: 25px;
+}
+
+body.font-large #guardar {
+	font-size: 25px;
+}
+
+body.font-large #boton-cerrar {
+	font-size: 25px;
+}
+
+body.font-large .mb-3 p {
+	font-size: 20px;
+}
+
+body.font-large .font-size-btn {
+	font-size: 20px;
+}
+
+body.font-large .contrast-btn {
+	font-size: 20px;
+}
+contrast-btn
+
+/* cuerpo de la pagina */
+
+/* imagen de fondo de pantalla */
+.imagen-fondo {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.cuerpo {
+	margin-top: 60px;
+}
+
+
+
+.contenido-video {
+    display: flex; /* Configura como flex para columnas */
+    align-items: stretch; /* Alinea los elementos al inicio en el eje vertical */
+    gap: 15px; /* Espacio entre columnas */
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FF6F91;
+    border-radius: 10px;
+    margin-right: 200px;
+    margin-left: 200px;
+    height: 650px;
+}
+
+.detalles, .video {
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra alrededor del div */
+}
+
+.titulo-video {
+	margin-top: 100px;
+}
+
+.titulo {
+	text-align: center;
+}
+
+.video {
+	background-color: #e4e4e4;
+	padding: 10px;
+}
+
+/* Ocupa espacio restante para detalles */
+.detalles {
+    width: 40%;
+    background-color: #fff;
+
+}
+
+
+/* config del contenedor del video */
+.video {
+    flex: 1;
+}
+
+.descripcion {
+    padding: 50px;
+    height: 96%;
+    background-color: none;
+    margin: 10px;
+    text-align: center;
+}
+
+.detalle-final {
+	margin-bottom: 40px;
+	margin-top: 20px;
+	color: black;
+	/* text-shadow: 3px 3px 0px #fff, 5px 5px 5px black; */
+}
+
+.desc-video {
+	padding: 40px;
+	margin-top: 40px;
+	font-size: 20px;
+}
+
+
+
+/* config del div del video */
+.video iframe {
+    border-radius: 8px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+
+
+ .promo-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background: linear-gradient(to right, #dfe8ff, #dfe8ff); /* #FF6F91 -> rosa */ 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.5s ease-in-out;
+	overflow: hidden;
+  	width: 80%; 
+  	margin: auto;
+    height: 600px; 
+    margin-top: 20px;
+    margin-bottom: 100px;
+    gap: 15px;
+     /*  Alinea los elementos al inicio en el eje vertical */
+
+  }
+
+
+  .promo-text {
+    width: 30%;
+  }
+
+  .promo-text h2 {
+    color: #FF6F91;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .promo-text p {
+    font-size: 20px;
+    color: #000;
+    line-height: 1.5;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 90px;
+  }
+
+  .promo-video {
+    flex: 1;
+  }
+
+  .promo-video video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+
+.video-yt {
+	border-radius: 10px;
+}
+
+
+/* carrusel de ropa */
+
+.product {
+	position: relative;
+	overflow: hidden;
+	padding: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 0px;
+}
+
+.product-category {
+	padding: 0 10vw;
+	font-size: 30px;
+	font-weight: 500;
+	margin-bottom: 20px;
+	text-transform: capitalize;
+}
+
+.product-container {
+	padding: 0;
+	display: flex;
+	scroll-behavior: smooth;
+	transition: transform 0.5s ease-in-out;
+	overflow: hidden;
+  	width: 80%; /* tamaño del box del div del carrusel */
+  	margin: auto;
+}
+
+.product-container::-webkit-scrollbar {
+	display: none;
+}
+
+.product-card {
+	flex: 0 0 auto;
+	width: 250px;
+	height: 500px;
+	margin-right: 40px;
+}
+
+.product-image {
+	position: relative;
+	width: 100%;
+	height: 350px;
+	overflow: hidden;
+}
+
+.product-thumb {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 20px;
+}
+
+.discount-tag {
+	position: absolute;
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 5px;
+	color: #FF6F91;
+	right: 10px;
+	top: 10px;
+	text-transform: capitalize;
+}
+
+
+.add-to-cart-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    transform: scale(1.1);
+}
+
+.cart-icon {
+    width: 40px;
+    object-fit: cover;
+}
+
+
+.card-btn {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translate(-50%);
+	padding: 10px;
+	width: 90%;
+	text-transform: capitalize;
+	border: none;
+	outline: none;
+	background-color: #fff;
+	border-radius: 5px;
+	transition: 0.5s;
+	cursor: pointer;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.product-card:hover .card-btn {
+	opacity: 1;
+}
+
+.card-btn:hover {
+	background-color: #6A92FF;
+	color: black;
+}
+
+#card-btn span {
+	position: absolute;
+	background: black;
+	transition: all 0.5s ease;
+}
+
+#card-btn span:nth-child(1) {
+	width: 100%;
+	height: 2px;
+	top: 0;
+	left: -100%;
+}
+
+#card-btn span:nth-child(2) {
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	right: -100%;
+}
+
+#card-btn span:nth-child(3) {
+	width: 2px;
+	height: 100%;
+	bottom: -100%;
+	left: 0;
+}
+
+#card-btn span:nth-child(4) {
+	width: 2px;
+	height: 100%;
+	top: -100%;
+	right: 0;
+}
+
+#card-btn:hover span:nth-child(1) {
+	left: 0;
+}
+
+#card-btn:hover span:nth-child(2) {
+	right: 0;
+}
+
+#card-btn:hover span:nth-child(3) {
+	bottom: 0;
+}
+
+#card-btn:hover span:nth-child(4) {
+	top: 0;
+}
+
+
+.product-info {
+	width: 100%;
+	height: 100%;
+	padding-top: 10px;
+}
+
+.product-brand {
+	text-transform: uppercase;
+	font-size: 22px;
+}
+
+.product-short-description {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	overflow: hidden;
+	opacity: 0.5;
+	text-transform: capitalize;
+	margin: 5px 0;
+}
+
+.more-text {
+  display: none;
+}
+
+.more-text.show {
+  display: inline;
+}
+
+.price {
+	font-weight: 900;
+	font-size: 20px;
+}
+
+.pre-btn, .next-btn {
+	border: none;
+	width: 50px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255, 255, 255 0.5);
+/*
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #dfe9ee 100%);
+*/
+	background: none;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.flecha {
+	width: 50px;
+}
+
+.pre-btn {
+	transform: rotate(180deg);
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-left: 60px;
+}
+
+.next-btn {
+	padding-left: 20px;
+	padding-right: 20px;
+	right: 0;
+	margin-right: 120px;
+}
+
+.pre-btn img, .next-btn img {
+	opacity: 0.3;
+}
+
+.pre-btn:hover img, .next-btn:hover img {
+	opacity: 1;
+}
+
+.collection-container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
+}
+
+.collection {
+	position: relative;
+}
+
+.collection img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.collection p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	color: #fff;
+	font-size: 50px;
+	text-transform: capitalize;
+}
+
+.collection:nth-child(3) {
+	grid-column: span 2;
+	margin-bottom: 10px;
+}
+
+.pagination {
+   text-align: center;
+   margin-top: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.dot {
+   display: inline-block;
+   width: 10px;
+   height: 10px;
+   margin: 0 5px;
+   background-color: lightgray;
+   border-radius: 50%;
+   cursor: pointer;
+}
+
+.dot.active {
+   background-color: grey;
+}
+
+.product-container.dragging {
+   cursor: grabbing;
+}
+
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-item-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.btn-danger {
+    border: none;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+}
+
+/*
+.modal {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-left: 700px;
+    margin-right: 700px;
+    background-color: #003366;
+}
+
+.select-talle {
+	margin-bottom: 40px;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-talle {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+*/
+
+/* Overlay para oscurecer el fondo */
+#overlay-talle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con algo de transparencia */
+    z-index: 1049; /* Debe estar detrás del modal */
+    display: none; /* Inicialmente oculto */
+}
+
+
+/* Modal estilizado */
+.modal-talle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #003366;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 9999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 500px;
+    text-align: center;
+}
+
+.modal-talle .modal-content {
+    padding: 20px;
+}
+
+.modal-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+
+/* estilo de botones en modal de seleccion del talle */
+#confirmar-talle, #cerrar-modal {
+	background-color: #FF6F91;
+	color: black;
+	font-size: 20px;
+	padding: 10px 15px;
+	transition: background-color 0.5s;
+	position: relative;  /* Necesario para los spans absolutos */
+	overflow: hidden;
+	border: none;
+	display: inline-block; 
+	
+}
+
+#confirmar-talle {
+	margin-right: 60px;
+}
+
+#confirmar-talle:hover {
+	background-color: #6A92FF;
+}
+
+#cerrar-modal:hover {
+	background-color: #6A92FF;
+}
+
+
+#confirmar-talle span, #cerrar-modal span {
+	position: absolute;
+	background: #fff;
+	transition: all 0.5s ease;
+}
+
+#confirmar-talle span:nth-child(1), #cerrar-modal span:nth-child(1) {
+	width: 100%;
+	height: 2px;
+	top: 0;
+	left: -100%;
+}
+
+#confirmar-talle span:nth-child(2), #cerrar-modal span:nth-child(2) {
+	width: 100%;
+	height: 2px;
+	bottom: 0;
+	right: -100%;
+}
+
+#confirmar-talle span:nth-child(3), #cerrar-modal span:nth-child(3) {
+	width: 2px;
+	height: 100%;
+	bottom: -100%;
+	left: 0;
+}
+
+#confirmar-talle span:nth-child(4), #cerrar-modal span:nth-child(4) {
+	width: 2px;
+	height: 100%;
+	top: -100%;
+	right: 0;
+}
+
+#confirmar-talle:hover span:nth-child(1), #cerrar-modal:hover span:nth-child(1) {
+	left: 0;
+}
+
+#confirmar-talle:hover span:nth-child(2), #cerrar-modal:hover span:nth-child(2) {
+	right: 0;
+}
+
+#confirmar-talle:hover span:nth-child(3), #cerrar-modal:hover span:nth-child(3) {
+	bottom: 0;
+}
+
+#confirmar-talle:hover span:nth-child(4), #cerrar-modal:hover span:nth-child(4) {
+	top: 0;
+}
+
+
+/* Select con estilos */
+.select-form {
+    background-color: #fff;
+    border: 2px solid #003366;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #000;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.select-form:hover {
+    border-color: #6A92FF;
+    box-shadow: 0 0 5px rgba(106, 146, 255, 0.5);
+}
+
+.select-form:focus {
+    border-color: #FF6F91;
+    box-shadow: 0 0 5px rgba(255, 111, 145, 0.5);
+}
+
+/* Estilo predeterminado para el placeholder */
+.select-form option[value=""] {
+    color: #aaa; /* Gris claro */
+}
+
+/* Estilo para las opciones normales */
+.select-form option:not([value=""]) {
+    color: #000; /* Negro */
+}
+
+/* Estilo para el modal */
+#modal-talle {
+    position: fixed;
+    z-index: 1050; /* Asegúrate de que el z-index sea menor que el de SweetAlert */
+}
+
+
+
+
+/* Poner la Alerta delante del modal */
+.swal2-container {
+  z-index: 20000 !important;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuir espacio entre los elementos */
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    transition: box-shadow 0.2s ease;
+}
+
+.cart-item:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+}
+
+.cart-item-info {
+    flex: 1; /* Ocupar el espacio restante */
+    font-size: 18px;
+    color: #555;
+}
+
+.cart-item-info h5 {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+body.font-large .cart-item-info h5 {
+	font-size: 25px;
+}
+
+body.font-large .cart-item-info {
+	font-size: 20px;
+}
+
+
+.cart-item-info p {
+    margin: 3px 0;
+    line-height: 1.4;
+}
+
+.btn-danger {
+    border: none;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 15px; /* Separar el botón del contenido */
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+
+
+/* footer */
+
+.footer {
+	background-color: #003366;
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-left: 20px;
+	overflow: visible;
+}
+
+.dropdown-custom {
+	position: relative;
+}
+
+.logo-redes {
+	display: block;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	bottom: 0;
+}
+
+
+/* Dropdown personalizado */
+
+
+.dropdown-menu-custom {
+	position: absolute;
+	bottom: 70px;
+	right: 12px;
+	display: none;
+	flex-direction: column;
+	gap: 15px;
+	background-color: transparent; 
+	padding: 0;
+	z-index: 100;
+}
+
+
+.dropdown-menu-custom a {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	gap: 10px;
+}
+
+.facebook, .instagram, .x, .whatsapp {
+	width: 50px;
+	cursor: pointer;
+	filter: blur(1px); /* para poner borrosa la imagen */
+	transition: filter 0.3s, transform 0.3s;
+	transform: scale(0.8); /* tamaño de vista de la imagen */
+}
+
+.facebook:hover, .instagram:hover, .x:hover, .whatsapp:hover {
+	filter: blur(0);
+	transform: scale(1);
+}
+
+.derechos {
+	width: 450px;
+	height: 20px;
+}
+
+.img-der {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+
+/* FIN del footer */
+
+/*  RESPONSIVE  */
+
+
+@media (max-width: 1800px) {
+
+
+	body.font-large .promo-text {
+		display: none;
+	}
+
+	.next-btn {
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0;
+		margin-right: 100px;
+		transition: 0.5s ease-in-out;
+	}
+
+}
+
+
+@media (max-width: 1600px) {
+
+	/* posicion de imagen carrito */
+	.custom-icons-container-1 {
+		position: fixed;
+		right: 80px;
+	}
+
+	/* posicion de imagen carrito */
+	.custom-icons-container {
+		position: fixed;
+		right: 10px;
+	}
+
+	.imagen-logo {
+		transition: 0.5s ease-in-out;
+		width: 230px;
+	}
+
+	body.font-large .navegacion a {
+		font-size: 25px;
+		margin: 0 40px;
+		margin-bottom: 10px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-large .navegacion {
+		margin-right: 230px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-large #buscar-desplegable {
+		font-size: 25px;
+		margin: 0 40px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.next-btn {
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0;
+		margin-right: 80px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.pre-btn {
+		transform: rotate(180deg);
+		padding-right: 20px;
+		padding-left: 20px;
+		margin-left: 40px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .promo-text p {
+		display: none;
+	}
+
+	body.font-normal .promo-text h2 {
+		margin-top: 200px;
+	}
+
+}
+
+@media (max-width: 1300px) {
+
+	body.font-large .navegacion a {
+		font-size: 30px;
+		margin-top: 10px;
+		margin-bottom: 15px;
+		transition: 0.5s ease-in-out;
+		text-align: center;
+	}
+
+	body.font-large #buscar-desplegable {
+		font-size: 30px;
+		text-align: center;
+		margin-top: 15px;
+	}
+
+	body.font-large .navegacion {
+		margin-right: 200px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.next-btn {
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0;
+		margin-right: 60px;
+	}
+
+	body.font-normal .promo-text {
+		display: none;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-large #navbarContent.collapse.show {
+        height: 390px;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+	.promo-container {
+    	height: 500px;
+    	transition: 0.5s ease-in-out;
+    }	
+
+    .next-btn {
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0;
+		margin-right: 40px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.pre-btn {
+		transform: rotate(180deg);
+		padding-right: 20px;
+		padding-left: 20px;
+		margin-left: 20px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .titulo {
+    	font-size: 25px;
+    	transition: 0.5s ease-in-out;
+	}
+
+}
+
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    /* Cambios para tablets */
+
+    body.font-large .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        align-items: center;
+        bottom: 10px;
+    }
+
+
+        /* Ajustes del logo */
+    body.font-large .imagen-logo {
+        max-height: 50px; /* Tamaño del logo */
+        margin-left: 20px; /* Espaciado del borde izquierdo */
+    }
+
+    .imagen-logo {
+		transition: 0.5s ease-in-out;
+		max-width: 200px;
+		margin-bottom: 8px;
+	}
+
+	/* posicion de imagen carrito */
+	.custom-btn .config {
+		position: fixed;
+		right: 5px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.custom-btn .carrito {
+		position: fixed;
+		right: 50px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.carrito, .config {
+		width: 40px;
+		transition: 0.5s ease-in-out;
+		margin-top: 10px;
+		margin-left: 0;
+	}
+
+	body.font-large .titulo {
+    	font-size: 30px;
+    	transition: 0.5s ease-in-out;
+	}
+
+	.promo-container {
+    	height: 400px;
+    	transition: 0.5s ease-in-out;
+    }
+
+    .next-btn {
+		padding-left: 20px;
+		padding-right: 20px;
+		right: 0;
+		margin-right: 20px;
+		transition: 0.5s ease-in-out;
+	}
+
+	.pre-btn {
+		transform: rotate(180deg);
+		padding-right: 20px;
+		padding-left: 20px;
+		margin-left: 0;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .imagen-logo {
+    	width: 170px;
+    	margin-bottom: 10px;
+    	transition: 0.5s ease-in-out;
+    }
+
+    body.font-normal .product-category {
+		font-size: 20px !important;
+	}
+
+	body.font-normal .product-brand {
+		font-size: 17px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .price {
+		font-size: 15px !important;;
+	}
+
+	body.font-normal .card-btn {
+		font-size: 16px;
+	}
+
+	body.font-large .product-category {
+		font-size: 32px;
+	}
+
+	body.font-large .product-brand {
+		font-size: 22px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-large .price {
+		font-size: 22px;
+	}
+
+	body.font-large .card-btn {
+		font-size: 20px;
+	}
+
+	body.font-large .derechos {
+		width: 400px;
+		height: 20px;
+		margin-top: 20px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .titulo {
+    	font-size: 20px;
+    	transition: 0.5s ease-in-out;
+	}
+
+
+
+}
+
+@media (max-width: 550px) {
+	body.font-large .titulo {
+    	font-size: 25px;
+    	transition: 0.5s ease-in-out;
+	}
+
+	.promo-container {
+    	height: 250px;
+    	transition: 0.5s ease-in-out;
+    }
+
+    .product-container {
+  		width: 65%; /* tamaño del box del div del carrusel */
+	}
+
+	body.font-large .product-category {
+		font-size: 26px;
+		text-align: center;
+	}
+
+	body.font-large .derechos {
+		width: 300px;
+		height: 18px;
+		margin-top: 20px;
+		transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .titulo {
+    	font-size: 18px;
+    	transition: 0.5s ease-in-out;
+	}
+
+	body.font-normal .product-category {
+		text-align: center;
+	}
+
+	body.font-large #modal-talle {
+		width: 90%;
+		font-size: 20px;
+	}
+
+	body.font-normal #modal-talle {
+		width: 90%;
+	}
+}
+
+@media (max-width: 480px) {
+    /* Cambios para teléfonos pequeños */
+
+    body.font-large .titulo {
+    	font-size: 20px;
+    	transition: 0.5s ease-in-out;
+	}
+
+}
+
+@media (max-width: 320px) {
+    /* Cambios para dispositivos más pequeños */
+
+    body.font-large .titulo {
+    	font-size: 20px;
+    	transition: 0.5s ease-in-out;
+	}
+}
+
+
+/* Modificación del menú desplegable (por si tienes submenús) 
+.dropdown-menu {
+    display: block;  Asegura que el menú desplegable se muestre como bloque /*
+    padding: 0;
+}
+
+.dropdown-item {
+    display: block; /* Hace que los elementos dentro del dropdown estén en línea vertical /*
+    padding: 10px 15px; /* Ajusta el padding para mayor espacio /*
+}
+
+*/
+
+/*
+
+Extra pequeño (xs): Menos de 576px. Dispositivos móviles pequeños.
+Pequeño (sm): Desde 576px hasta 767px. Dispositivos móviles más grandes, como algunos smartphones y tablets en modo vertical.
+Mediano (md): Desde 768px hasta 991px. Tablets y algunos dispositivos en formato horizontal.
+Grande (lg): Desde 992px hasta 1199px. Computadoras portátiles de tamaño medio y pantallas de tamaño pequeño.
+Extra grande (xl): Desde 1200px hasta 1399px. Computadoras de escritorio de tamaño medio a grande.
+Extra extra grande (xxl): Más de 1400px. Pantallas grandes o monitores de escritorio muy grandes.
+
+
+H1 – 30 px
+H2 – 26 px (4 menos)
+H3 – 22 px (4 menos)
+H4 – 18 px (4 menos)
+H5 – 16 px (2 menos)
+H6 – 14 px (2 menos)
+
+
+
+/* Asegurarse de que los elementos dentro del menú hamburguesa estén en una columna 
+.navbar-nav {
+    display: flex;
+    flex-direction: column; /* Muestra los elementos en una columna 
+    align-items: flex-start;  Alinea los elementos a la izquierda 
+}
+
+/* Ajuste para que los elementos de la barra de navegación estén en una columna en pantallas grandes 
+@media (min-width: 992px) { /* Cuando la pantalla tenga 992px o más 
+    .navbar-nav {
+    	display: flex;
+        flex-direction: row; /* Cambia la dirección a horizontal en pantallas grandes 
+        align-items: center; /* Centra los elementos de la barra de navegación 
+    }
+}
+
+/* Asegurarse de que los elementos del menú hamburguesa (en pantallas pequeñas) se muestren en una columna 
+.navegacion {
+    display: flex;
+    flex-direction: column;  Muestra los elementos en una columna cuando el menú hamburguesa esté activado 
+}
+
+/* Estilos para los elementos dentro de la lista del menú hamburguesa 
+.navbar-nav .nav-item {
+    margin-bottom: 10px;  Espaciado entre los enlaces 
+}
+
+
+*/
+
+
+@media (max-width: 1200px) {
+    /* El menú de hamburguesa se muestra como columna */
+    .navbar-nav {
+        display: flex;
+        flex-direction: column; /* Alinea los elementos verticalmente */
+        align-items: flex-start; /* Alinea los elementos hacia la izquierda */
+        margin: 0;
+        padding: 0;
+    }
+
+    body.font-normal .imagen-logo {
+    	width: 200px;
+    	margin-bottom: 10px;
+    	transition: 0.5s ease-in-out;
+    }
+
+    body.font-normal .product-category {
+		font-size: 28px;
+	}
+
+	body.font-large .product-brand {
+		font-size: 20px;
+	}
+
+
+	body.font-normal .price {
+		font-size: 20px;
+	}
+
+	body.font-normal .card-btn {
+		font-size: 16px;
+	}
+
+	body.font-normal .derechos {
+		width: 330px;
+		height: 18px;
+		margin-top: 20px;
+		transition: 0.5s ease-in-out;
+	}
+
+
+    /* posicion de imagen carrito */
+	.custom-icons-container-1 {
+		position: fixed;
+		right: 80px;
+	}
+
+	/* posicion de imagen carrito */
+	.custom-icons-container {
+		position: fixed;
+		right: 10px;
+	}
+
+    .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        align-items: center;
+        bottom: 10px;
+    }
+
+    /* Personalización del contenedor colapsable del menú */
+    #navbarContent.collapse.show {
+        /* Solo se aplica cuando el menú está desplegado */
+        display: flex;
+        flex-direction: column; /* Alinea los elementos en una columna */
+        border-radius: 15px;
+        border: 2px solid #fff;
+        background-color: #003366; /* Fondo oscuro */
+        position: fixed; /* Fijar el menú desplegable */
+        margin: auto;
+        top: 80px; /* Ajusta la distancia desde la parte superior */
+        height: 400px; /* Ajusta la altura al contenido */
+        width: 300px; /* Ancho del menú */
+        padding: 10px; /* Espaciado interno */
+        text-align: center;
+        z-index: 1040;
+    }
+
+    #navbarContent.collapse {
+    	transition: 0.5s ease-in-out;
+	}
+
+    body.high-contrast #navbarContent.collapse.show {
+    	background-color: #000;
+		border: 3px solid #959595;
+    }
+
+    body.high-contrast #buscar-menu::after {
+    	background-color: #959595;
+    }
+
+	body.high-contrast .barra-navegacion .navegacion a::after {
+		background-color: #959595;
+	}
+  
+
+  	body.high-contrast .modal-content-1 {
+  		background-color: #000;
+		border: 3px solid #959595;
+  	}
+
+  	body.high-contrast .modal-header {
+  		background-color: #000;
+  	}
+
+  	body.high-contrast .contenido-busqueda {
+  		background-color: #000;
+  	}
+
+    /* Modal de búsqueda */
+	.contenido-busqueda {
+    	background-color: #003366;
+    	padding: 20px;
+    	align-content: center;
+    	justify-content: center;
+    	text-align: center;
+
+	}
+
+	.modal-header {
+		background-color: #003366;
+	}
+
+	/* h3 */
+	.busqueda {
+		color: #fff;
+		font-weight: bold;
+		position: fixed;
+		grid-gap: 10px;
+		margin-bottom: 10px;
+		text-align: center;
+
+	}
+
+
+	/* Caja interna blanca */
+
+	.inputs {
+		background-color: #fff;
+		border-radius: 10px;
+		padding: 20px;
+		font-size: 20px;
+	}
+
+	#modal-content-1 {
+    	border-radius: 10px; /* Borde redondeado completo */
+    	border: 1px solid #fff !important;
+    	overflow: hidden; /* Asegura que no haya bordes cortados */
+	}
+
+
+
+	#buscar-menu {
+    	color: #fff;
+   	 	text-decoration: none;
+    	position: relative;
+    	padding-bottom: 5px;
+    	transition: color 0.3s ease;
+    	margin-top: 10px;
+    	background-color: transparent;
+	}
+
+	/* Subrayado animado */
+	#buscar-menu::after {
+    	content: "";
+    	position: absolute;
+    	width: 0;
+    	height: 2px;
+    	left: 0;
+    	bottom: 0; /* Ajusta para que quede debajo del texto */
+    	background-color: #6A92FF;
+    	transition: width 0.3s ease;
+	}
+
+	/* Expande la línea bajo el botón al pasar el mouse */
+	#buscar-menu:hover::after {
+	    width: 100%; /* Expande el subrayado */
+	}
+
+
+	#buscar-resul {
+		border-radius: 10px;
+		background-color: #FF6F91;
+		color: black;
+		font-size: 20px;
+		padding: 10px 15px;
+		transition: background-color 0.5s;
+		position: relative;  /* Necesario para los spans absolutos */
+		overflow: hidden;
+		border: none;
+		display: inline-block; 
+	
+	}
+
+
+	#buscar-resul:hover {
+		background-color: #6A92FF;
+	}
+
+	#buscar-resul span {
+		position: absolute;
+		background: #fff;
+		transition: all 0.5s ease;
+	}
+
+	#buscar-resul span:nth-child(1) {
+		width: 100%;
+		height: 2px;
+		top: 0;
+		left: -100%;
+	}	
+
+	#buscar-resul span:nth-child(2) {
+		width: 100%;
+		height: 2px;
+		bottom: 0;
+		right: -100%;
+	}
+
+	#buscar-resul span:nth-child(3) {
+		width: 2px;
+		height: 100%;
+		bottom: -100%;
+		left: 0;
+	}
+
+	#buscar-resul span:nth-child(4) {
+		width: 2px;
+		height: 100%;
+		top: -100%;
+		right: 0;
+	}
+
+	#buscar-resul:hover span:nth-child(1) {
+		left: 0;
+	}
+
+	#buscar-resul:hover span:nth-child(2) {
+		right: 0;
+	}
+
+	#buscar-resul:hover span:nth-child(3) {
+		bottom: 0;
+	}
+
+	#buscar-resul:hover span:nth-child(4) {
+		top: 0;
+	}
+
+	.modal {
+    	z-index: 1055; /* Mayor que el menú de hamburguesa */
+	}
+
+	.modal-backdrop {
+   		z-index: 1050; /* Fondo del modal detrás del contenido del modal */
+	}
+
+	.modal-open {
+    	overflow: hidden;
+	}
+
+
+
+	/* Botón de cierre del modal */
+	.btn-close {
+    	position: absolute;
+    	top: 10px;
+    	right: 10px;
+    	background-color: red;
+    	border: none;
+    	font-size: 1.5rem;
+    	font-weight: bold;
+    	color: red;
+    	cursor: pointer;
+	}
+
+
+    body.font-normal .navegacion a {
+    	font-size: 25px;
+    	margin-top: 10px;
+    	margin-bottom: 20px;
+    	text-align: center;
+    }
+
+    body.font-normal #buscar-desplegable {
+    	font-size: 25px;
+    	margin-top: 15px;
+    	text-align: center;
+    }
+
+    body.font-large .derechos {
+		width: 450px;
+		height: 20px;
+		margin-top: 30px;
+		transition: 0.5s ease-in-out;
+	}
+
+
+    /* Espaciado entre los elementos del menú */
+    .navbar-nav .nav-item {
+        margin-bottom: 30px; /* Espaciado inferior */
+        
+    }
+
+    .navbar-nav .nav-link {
+        color: #fff; /* Color del texto */
+        padding: 10px; /* Espaciado interno */
+        text-align: center; /* Alineación del texto */
+        margin-bottom: 30px;
+    }
+
+    #catalogo {
+    	margin-top: 20px;
+    }
+
+    .nav-item {
+    	text-align: center;
+    }
+
+    
+
+}
+
+@media (min-width: 1201px) {
+    .navegacion {
+        display: flex;
+    }
+
+    #navbarContent {
+        position: static; /* Elimina el posicionamiento fijo */
+        height: auto; /* Ajusta la altura al contenido */
+        width: auto; /* Deja que el contenido fluya naturalmente */
+        background-color: transparent; /* Elimina el fondo en pantallas grandes */
+        border: none; /* Elimina el borde */
+        padding: 0; /* Elimina el espaciado */
+    }
+}
+

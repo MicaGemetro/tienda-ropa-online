@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESSENCIA - Tienda Online</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="pantalon-corto.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+      <div class="container-fluid barra-navegacion">
+        <!-- Botón de hamburguesa para pantallas pequeñas -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logo">
+          <a class="navbar-brand mx-auto d-flex" href="index.html">
+            <img src="essencia.png" class="imagen-logo" alt="logo de la página">
+          </a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <div class="navbar-nav ms-auto">
+            <div class="navegacion">
+              <a class="nav-link" id="catalogo" href="catalogo.html">Catálogo</a>
+              <div class="nav-item dropdown d-none d-xl-block">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="buscar-desplegable" aria-expanded="false">
+                  <span>Buscar</span>
+                  </button>
+                  <div class="dropdown-menu p-3 contenido-busqueda" id="contenido-busqueda">
+                    <div class="busqueda-caja">
+                      <button class="cerrar-modal">&times;</button> <!-- Botón de cierre -->
+                      <br><h3 class="busqueda">Búsqueda</h3><br><br>
+                      <div class="inputs">
+                        <!-- Formulario de búsqueda en tienda.html --> 
+                              <form id="form-busqueda-tienda" action="resultado.html" method="GET">
+                        <div class="input-talles">
+                          <p><strong>Talle:</strong></p>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="xs" name="talles" value="xs">
+                            <label class="form-check-label" for="xs">XS</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="s" name="talles" value="s">
+                            <label class="form-check-label" for="s">S</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="m" name="talles" value="m">
+                            <label class="form-check-label" for="m">M</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="l" name="talles" value="l">
+                            <label class="form-check-label" for="l">L</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="xl" name="talles" value="xl">
+                            <label class="form-check-label" for="xl">XL</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="xxl" name="talles" value="xxl">
+                            <label class="form-check-label" for="xxl">XXL</label>
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="xxxl" name="talles" value="xxxl">
+                            <label class="form-check-label" for="xxxl">XXXL</label>
+                          </div>
+                        </div>
+
+                        <div class="input-colores mt-3">
+                          <p><strong>Color:</strong></p>
+                          <select class="form-select select-form" name="colores">
+                            <option value="">Selecciona un color</option>
+                            <option value="negro">Negro</option>
+                            <option value="beige">Beige</option>
+                            <option value="gris">Gris</option>
+                            <option value="verde">Verde</option>
+                          </select>
+                        </div>
+
+                        <div class="input-modelos mt-3">
+                          <p><strong>Modelo:</strong></p>
+                          <select class="form-select select-form" name="modelos">
+                            <option value="">Selecciona un modelo</option>
+                            <option value="pantalones">Pantalones</option>
+                            <option value="remeras">Remeras</option>
+                            <option value="vestidos">Vestidos</option>
+                          </select>
+                        </div>
+
+                        <div class="boton-buscar">
+                          <button type="submit" class="buscar" id="buscar">
+                          <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <b>Buscar</b>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+
+                  </div>
+
+              </div>
+
+              <!-- Botón Buscar para pantallas pequeñas -->
+              <a id="buscar-menu" class="nav-link btn btn-secondary d-xl-none" data-bs-toggle="modal" data-bs-target="#buscarModal">Buscar</a>
+
+              <a id="blog" class="nav-link" href="blog.html">Blog</a>
+              <a id="testimonio" class="nav-link" href="testimonios.html">Testimonios</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-icons-container-1">
+          <div class="custom-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <img src="carrito.png" class="carrito" alt="carrito de compra">
+          </div>
+        </div>
+        <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content custom-border" id="contenido-carrito">
+                  <div class="modal-header custom-header">
+                    <h5 class="modal-title" id="cartModalLabel">Carrito</h5>
+                    <button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-subtitle text-center">Listado del Carrito:</div>
+                  <div class="modal-body custom-inner-box">
+                    <div id="cartItems" class="carrito-lista">
+                      <!-- Listado de productos en el carrito se llenará dinámicamente -->
+                    </div>
+                  </div>
+                  <div class="modal-footer custom-footer" id="botones">
+                    <button type="button" class="btn btn-secondary" id="pagar" data-bs-dismiss="modal">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <b>Pagar</b>
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="boton-cerrar" data-bs-dismiss="modal">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <b>Cerrar</b>
+                    </button>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="custom-icons-container">
+          <div class="custom-btn" data-bs-toggle="modal" data-bs-target="#configModal" id="custom-btn">
+            <img src="configuracion.png" class="config" alt="configuración">
+          </div>
+        </div>
+        <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content custom-border" id="contenido-config">
+                  <div class="modal-header custom-header">
+                    <h5 class="modal-title text-center" id="configModalLabel">Configuración</h5>
+                    <button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                  </div>
+                  <div class="modal-body custom-inner-box">
+                  <!-- Opciones de configuración -->
+        
+                  <!-- Cambiar tamaño de letra -->
+                    <div class="mb-3">
+                        <p><strong>Tamaño de letra:</strong></p>
+                      <div class="botones-1">
+                        <button type="button" class="btn btn-outline-secondary font-size-btn" data-size="normal">Normal</button>
+                          <button type="button" class="btn btn-outline-secondary font-size-btn" data-size="large">Grande</button>
+                      </div>
+                    </div>
+
+                    <!-- Cambiar contraste -->
+                    <div class="mb-3">
+                        <p><strong>Tema:</strong></p>
+                        <div class="botones-2">
+                          <button type="button" class="btn btn-outline-secondary contrast-btn" data-contrast="low">Claro</button>
+                          <button type="button" class="btn btn-outline-secondary contrast-btn" data-contrast="high">Oscuro</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer custom-footer" id="botones">
+                    <button type="button" class="btn btn-secondary" id="guardar" data-bs-dismiss="modal">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <b>Guardar</b>
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="boton-cerrar" data-bs-dismiss="modal">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <b>Cerrar</b>
+                    </button>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </nav>
+
+
+    <div class="modal fade" id="buscarModal" tabindex="-1" aria-labelledby="buscarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" id="modal-content-1">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buscarModalLabel">Búsqueda</h5>
+                    <button type="button" class="btn-close custom-close-btn" id="custom-close-btn" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+            
+                <div class="contenido-busqueda">
+                    <h3 class="busqueda">Búsqueda</h3>
+                    <div class="inputs">
+                      <!-- Formulario de búsqueda en tienda.html --> 
+                      <form id="form-busqueda-tienda" action="resultado.html" method="GET">
+                <div class="input-talles">
+                  <p><strong>Talle:</strong></p>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="xs" name="talles" value="xs">
+                    <label class="form-check-label" for="xs">XS</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="s" name="talles" value="s">
+                    <label class="form-check-label" for="s">S</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="m" name="talles" value="m">
+                    <label class="form-check-label" for="m">M</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="l" name="talles" value="l">
+                    <label class="form-check-label" for="l">L</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="xl" name="talles" value="xl">
+                    <label class="form-check-label" for="xl">XL</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="xxl" name="talles" value="xxl">
+                    <label class="form-check-label" for="xxl">XXL</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="xxxl" name="talles" value="xxxl">
+                    <label class="form-check-label" for="xxxl">XXXL</label>
+                  </div>
+                </div>
+
+                <div class="input-colores mt-3">
+                  <p><strong>Color:</strong></p>
+                  <select class="form-select select-form" name="colores">
+                    <option value="">Selecciona un color</option>
+                    <option value="negro">Negro</option>
+                    <option value="beige">Beige</option>
+                    <option value="gris">Gris</option>
+                    <option value="verde">Verde</option>
+                  </select>
+                </div>
+
+                <div class="input-modelos mt-3">
+                  <p><strong>Modelo:</strong></p>
+                  <select class="form-select select-form" name="modelos">
+                    <option value="">Selecciona un modelo</option>
+                    <option value="pantalones">Pantalones</option>
+                    <option value="remeras">Remeras</option>
+                    <option value="vestidos">Vestidos</option>
+                  </select>
+                </div>
+
+                <div class="boton-buscar">
+                  <button type="submit" class="buscar-resul" id="buscar-resul">
+                  <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <b>Buscar</b>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="cuerpo">
+      <div class="panta-titulo">
+        <h1 class="titulo-pantalones"><b>Pantalón Corto</b></h1>
+      </div>
+      
+      <div class="producto-box">
+              <!-- Imágenes -->
+              <div class="imagen-box">
+                  <div class="imagen-principal">
+                    <img src="vestimenta/pantalones/negro/negro.jpg" alt="Imagen principal" class="img-grande" id="imagen-grande">
+                    <!--  <img src="vestimenta/pantalones/negro/negro.jpg" id="imagen-grande" alt="Imagen principal" class="img-grande"> -->
+                  </div>
+                  <div class="imagenes-secundarias">
+                      <img id="img-chica1" src="vestimenta/pantalones/negro/1.jpg" class="img-chica" alt="Imagen secundaria 1" onclick="intercambiarImagen(this)">
+                      <img id="img-chica2" src="vestimenta/pantalones/negro/2.jpg" class="img-chica" alt="Imagen secundaria 2" onclick="intercambiarImagen(this)">
+                      <img id="img-chica3" src="vestimenta/pantalones/negro/3.jpg" class="img-chica" alt="Imagen secundaria 3" onclick="intercambiarImagen(this)">
+                  </div>
+              </div>
+
+              <!-- Detalles del Producto -->
+              <div class="detalles-box">
+                  <h1 class="nom-pantalon"><b>Short Ruby</b></h1>
+                  <h2 class="precio">$79999</h2>
+
+                  <!-- Selección de colores -->
+                  <div class="colores">
+                      <h5><b>Colores:</b></h5>
+                      <div class="color seleccionado" data-color="negro" id="color-negro" style="background-color: #0d0d10;" onclick="cambiarColor('negro')"></div>
+                      <div class="color" data-color="verde" id="color-verde" style="background-color: #88c996;" onclick="cambiarColor('verde')"></div>
+                      <div class="color" data-color="beige" id="color-beige" style="background-color: #e6ddd4;" onclick="cambiarColor('beige')"></div>
+                  </div>
+
+                  <!-- Selección de talles -->
+                  <div class="talles">
+              <h5><b>Talles:</b></h5>
+              <div class="talles-opciones">
+                  <div class="talle" data-talle="XS" onclick="seleccionarTalle(this)"><b>XS</b></div>
+                  <div class="talle" data-talle="S" onclick="seleccionarTalle(this)"><b>S</b></div>
+                  <div class="talle" data-talle="M" onclick="seleccionarTalle(this)"><b>M</b></div>
+                  <div class="talle" data-talle="L" onclick="seleccionarTalle(this)"><b>L</b></div>
+                  <div class="talle" data-talle="XL" onclick="seleccionarTalle(this)"><b>XL</b></div>
+                  <div class="talle" data-talle="XXL" onclick="seleccionarTalle(this)"><b>XXL</b></div>
+                  <div class="talle" data-talle="XXXL" onclick="seleccionarTalle(this)"><b>XXXL</b></div>
+              </div>
+          </div>
+
+                  <!-- Cantidad -->
+                  <div class="cantidad">
+              <h5 class="titulo-cantidad"><b>Cantidad</b></h5>
+              <div class="iconos-signos">
+                <i class="bi bi-dash-circle icon-cantidad" id="boton-menos" onclick="cambiarCantidad(-1)"></i>
+                <span id="cantidad">1</span>
+                <i class="bi bi-plus-circle icon-cantidad" id="boton-mas" onclick="cambiarCantidad(1)"></i>
+              </div>
+          </div>
+
+                  <!-- Botón de agregar al carrito -->
+                  <div class="boton-carrito">
+
+                    <button class="btn-agregar" id="btn-agregar" onclick="agregarAlCarrito()">
+                      <img src="carrito-negro.png" alt="carrito" class="carrito-agregar">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <b>Agregar al carrito</b>
+                    </button>
+                  </div>
+
+                  <!-- Detalles adicionales -->
+          <section class="descripcion">
+              <h3 class="detalle">Detalles del Producto</h3>
+              <p>Short tejido en un hilado de morley con viscosa, super confortable al tacto. Cintura con elastico interno y cordón en el mismo hilado. Este pantalón corto está diseñado con comodidad y estilo. Perfecto para cualquier ocasión.</p>
+          </section>
+
+              </div>
+
+
+
+          </div>
+
+         
+
+          <!-- Comentarios -->
+          <div class="comentarios-seccion">
+          <h3 class="comentarios">Comentarios</h3>
+    
+          <!-- Comentarios ya existentes -->
+          <div id="comentarios-lista">
+              <!-- Ejemplo de un comentario -->
+              <div class="comentario-1">
+                  <div class="comentario-superior">
+                    <h4><strong>Carla</strong></h4>
+                    <div class="valoracion" id="valoracion-1">
+                      <h4>Valoración:</h4>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                    </div>
+                  </div>
+                  <p class="comentario-texto"><b>Super recomendable, es ideal. El contacto es genial, excelente la calidad y precio. Recomendadísimo al igual que el seguimiento del pedido. Un 10!!</b></p>
+              </div>
+              <div class="comentario-2">
+                  <div class="comentario-superior">
+                    <h4><strong>Marcela</strong></h4>
+                    <div class="valoracion" id="valoracion-2">
+                      <h4>Valoración:</h4>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                        <i class="bi bi-star-fill active"></i>
+                    </div>
+                  </div>
+                  <p class="comentario-texto"><b>Me encanta todo de esta tienda!! Ropa super actual, buen precio, buena calidad, y atención y trato esquisito. La super recomiendo excelente calidad y diseño.</b></p>
+              </div>
+          </div>
+    
+          <!-- Formulario para agregar comentarios -->
+          <div class="comentarios-formulario">
+              <h4><b>Agregar un comentario</b></h4>
+              <form id="comentario-form" novalidate>
+                  <div class="mb-3">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      <input type="text" id="nombre" class="form-control" placeholder="Ingresa tu nombre (opcional)">
+                  </div>
+                  <div class="mb-3" id="valoraciones">
+                      <label class="form-label">Valoración</label>
+                      <div id="valoracion-estrellas" class="valoracion">
+                          <i class="bi bi-star-fill" data-valor="1"></i>
+                          <i class="bi bi-star-fill" data-valor="2"></i>
+                          <i class="bi bi-star-fill" data-valor="3"></i>
+                          <i class="bi bi-star-fill" data-valor="4"></i>
+                          <i class="bi bi-star-fill" data-valor="5"></i>
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="comentario" class="form-label">Comentario</label>
+                      <textarea id="comentario" class="form-control" rows="3" placeholder="Escribe tu comentario"></textarea>
+                  </div>
+                  <div class="btn-comentario">
+                    <button class="boton-agregar" type="submit" class="btn btn-primary"><b>Agregar comentario</b></button>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script src="pantalon-corto.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <footer>
+    <div class="footer">
+      <img src="essencia.png" class="imagen-logo" alt="logo de la página">
+
+      <div class="dropdown-custom">
+        <img src="redes/logo-redes.png" alt="redes sociales" class="logo-redes" onclick="toggleDropdown()">
+        <div class="dropdown-menu-custom" id="menu-redes">
+          <a href="https://www.facebook.com/?locale=es_LA">
+              <img src="redes/facebook.PNG" alt="facebook" class="facebook">
+          </a>
+          <a href="https://www.instagram.com/" class="a-inst">
+              <img src="redes/instagram.PNG" alt="instagram" class="instagram">
+          </a>
+          <a href="https://x.com/?lang=es">
+              <img src="redes/x.png" alt="x" class="x">
+          </a>
+          <a href="https://web.whatsapp.com/" class="a-whats">
+              <img src="redes/whatsapp.PNG" alt="whatsapp" class="whatsapp">
+          </a>
+        </div>
+      </div>
+
+      <div class="img-der">
+        <img src="derechos.PNG" alt="derechos de la pagina" class="derechos">
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>
+
+
